@@ -11,5 +11,5 @@ def get_files_info(working_directory, directory=""):
         return "\n".join(list(map(lambda item: f"- {item}: file_size={os.path.getsize(os.path.join(target_dir, item))} bytes, is_dir={os.path.isdir(os.path.join(target_dir, item))}",
                                 os.listdir(target_dir))))
     except Exception as e:
-        return f"Error: {e}"
+        return f"Error listing files: {e}"
     
