@@ -1,33 +1,22 @@
 import unittest
-from functions.get_files_info import get_files_info
+from functions.get_files_info import get_file_content
 
-class TestGetFilesInfo(unittest.TestCase):
+class TestGetFileContent(unittest.TestCase):
+    def test_main(self):
+        result = get_file_content("calculator", "main.py")
+        print(result)
+       
     def test_calculator(self):
-        result = get_files_info("calculator", ".")
+        result = get_file_content("calculator", "pkg/calculator.py")
         print(result)
-        # self.assertIn("- main.py:", result)
-        # self.assertIn("file_size=", result)
-        # self.assertIn("bytes, is_dir=False", result)
-        # self.assertIn("pkg", result)
-        # self.assertIn("is_dir=True", result)
-
-    def test_pkg(self):
-        result = get_files_info("calculator", "pkg")
-        print(result)
-        # self.assertIn("- calculator.py", result)
-        # self.assertIn("file_size=", result)
-        # self.assertIn("bytes, is_dir=False", result)
-        # self.assertIn("- render.py", result)
 
     def test_bin(self):
-        result = get_files_info("calculator", "/bin")
+        result = get_file_content("calculator", "bin/cat")
         print(result)
-        # self.assertEqual('Error: Cannot list "/bin" as it is outside the permitted working directory', result)
 
-    def test_not_permitted(self):
-        result = get_files_info("calculator", "../")
+    def test_not_exist(self):
+        result = get_file_content("calculator", "pkg/does_not_exist.py")
         print(result)
-        # self.assertEqual('Error: Cannot list "../" as it is outside the permitted working directory', result)
 
 
 if __name__ == "__main__":
